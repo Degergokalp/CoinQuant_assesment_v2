@@ -1,0 +1,37 @@
+{
+  "strategy_name": "RSI-of-MFI Strategy",
+  "description": "A strategy that uses RSI of MFI indicator to identify oversold/overbought conditions for trading signals",
+  "market_type": "spot",
+  "instrument": "BTC/USDT",
+  "timeframe": "1h",
+  "initial_capital": 10000,
+  "default_position_size": 100,
+  "conditions": [
+    {
+      "id": 1,
+      "type": "entry",
+      "series_1": "RSI",
+      "series_1_params": {
+        "period": 14,
+        "source": "MFI"
+      },
+      "operator": "less_than",
+      "value": 20,
+      "action": "buy",
+      "order_type": "taker"
+    },
+    {
+      "id": 2,
+      "type": "exit",
+      "series_1": "RSI",
+      "series_1_params": {
+        "period": 14,
+        "source": "MFI"
+      },
+      "operator": "greater_than",
+      "value": 80,
+      "action": "exit_long",
+      "order_type": "taker"
+    }
+  ]
+}

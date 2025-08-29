@@ -1,0 +1,42 @@
+{
+  "strategy_name": "RSI-of-MFI",
+  "market_type": "spot",
+  "instrument": "BTC/USDT",
+  "timeframe": "1h",
+  "default_position_size": 100,
+  "fee_slippage_model": {
+    "global": {
+      "maker": 0.04,
+      "taker": 0.1,
+      "slippage_pct": 0.02
+    }
+  },
+  "conditions": [
+    {
+      "id": 1,
+      "type": "entry",
+      "series_1": "RSI",
+      "series_1_params": {
+        "period": 14,
+        "source": "MFI"
+      },
+      "operator": "less_than",
+      "value": 20,
+      "action": "buy",
+      "order_type": "taker"
+    },
+    {
+      "id": 2,
+      "type": "exit",
+      "series_1": "RSI",
+      "series_1_params": {
+        "period": 14,
+        "source": "MFI"
+      },
+      "operator": "greater_than",
+      "value": 80,
+      "action": "exit_long",
+      "order_type": "taker"
+    }
+  ]
+}

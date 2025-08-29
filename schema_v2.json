@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "strategy_name",
+    "market_type",
+    "instrument",
+    "timeframe",
+    "conditions"
+  ],
+  "properties": {
+    "strategy_name": {
+      "type": "string"
+    },
+    "market_type": {
+      "enum": [
+        "spot",
+        "futures"
+      ]
+    },
+    "instrument": {
+      "type": "string"
+    },
+    "timeframe": {
+      "type": "string"
+    },
+    "default_position_size": {
+      "type": "number"
+    },
+    "fee_slippage_model": {
+      "type": "object",
+      "properties": {
+        "global": {
+          "type": "object",
+          "properties": {
+            "maker": {
+              "type": "number"
+            },
+            "taker": {
+              "type": "number"
+            },
+            "slippage_pct": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "maker",
+            "taker",
+            "slippage_pct"
+          ]
+        }
+      }
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "series_1",
+          "operator",
+          "action"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "enum": [
+              "entry",
+              "exit",
+              "filter"
+            ]
+          },
+          "group_id": {
+            "type": "integer"
+          },
+          "timeframe": {
+            "type": "string"
+          },
+          "series_1": {
+            "type": "string"
+          },
+          "series_1_params": {
+            "type": "object"
+          },
+          "operator": {
+            "type": "string"
+          },
+          "series_2": {
+            "type": "string"
+          },
+          "series_2_params": {
+            "type": "object"
+          },
+          "value": {},
+          "action": {
+            "type": "string"
+          },
+          "order_type": {
+            "enum": [
+              "maker",
+              "taker"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
