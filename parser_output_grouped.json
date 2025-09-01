@@ -1,0 +1,96 @@
+{
+  "strategy_name": "MACD-RSI-MFI-Entry",
+  "description": "On 1h bars, if MACD line crosses above signal AND RSI < 50 AND MFI < 30, go long. Exit when MACD line crosses below signal OR RSI > 70.",
+  "market_type": "spot",
+  "instrument": "BTC/USDT",
+  "timeframe": "1h",
+  "initial_capital": 100000,
+  "default_position_size": 100,
+  "sessions": [
+    {
+      "start": "00:00",
+      "end": "23:59",
+      "timezone": "UTC"
+    }
+  ],
+  "days": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ],
+  "conditions": [
+    {
+      "id": 1,
+      "group_id": 1,
+      "type": "entry",
+      "series_1": "MACD_LINE",
+      "series_1_params": {
+        "fast": 12,
+        "slow": 26
+      },
+      "series_2": "MACD_SIGNAL",
+      "series_2_params": {
+        "signal": 9
+      },
+      "operator": "crosses_above",
+      "action": "buy",
+      "order_type": "taker"
+    },
+    {
+      "id": 2,
+      "group_id": 1,
+      "type": "filter",
+      "series_1": "RSI",
+      "series_1_params": {
+        "period": 14
+      },
+      "operator": "less_than",
+      "value": 50,
+      "action": "none"
+    },
+    {
+      "id": 3,
+      "group_id": 1,
+      "type": "filter",
+      "series_1": "MFI",
+      "series_1_params": {
+        "period": 14
+      },
+      "operator": "less_than",
+      "value": 30,
+      "action": "none"
+    },
+    {
+      "id": 4,
+      "type": "exit",
+      "series_1": "MACD_LINE",
+      "series_1_params": {
+        "fast": 12,
+        "slow": 26
+      },
+      "series_2": "MACD_SIGNAL",
+      "series_2_params": {
+        "signal": 9
+      },
+      "operator": "crosses_below",
+      "action": "exit_long",
+      "order_type": "taker"
+    },
+    {
+      "id": 5,
+      "type": "exit",
+      "series_1": "RSI",
+      "series_1_params": {
+        "period": 14
+      },
+      "operator": "greater_than",
+      "value": 70,
+      "action": "exit_long",
+      "order_type": "taker"
+    }
+  ]
+}

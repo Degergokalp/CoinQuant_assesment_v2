@@ -1,0 +1,61 @@
+{
+  "strategy_name": "SMA-RSI-Crossover",
+  "description": "Enter long when SMA(50) crosses above SMA(200) and RSI(14) > 55; exit when close crosses below SMA(50) or RSI < 45.",
+  "market_type": "spot",
+  "instrument": "BTC/USDT",
+  "timeframe": "15m",
+  "default_position_size": 100,
+  "conditions": [
+    {
+      "id": 1,
+      "type": "entry",
+      "series_1": "SMA",
+      "series_1_params": {
+        "period": 50
+      },
+      "operator": "crosses_above",
+      "series_2": "SMA",
+      "series_2_params": {
+        "period": 200
+      },
+      "action": "buy",
+      "order_type": "taker"
+    },
+    {
+      "id": 2,
+      "type": "entry",
+      "series_1": "RSI",
+      "series_1_params": {
+        "period": 14
+      },
+      "operator": "greater_than",
+      "value": 55,
+      "action": "buy",
+      "order_type": "taker"
+    },
+    {
+      "id": 3,
+      "type": "exit",
+      "series_1": "close",
+      "operator": "crosses_below",
+      "series_2": "SMA",
+      "series_2_params": {
+        "period": 50
+      },
+      "action": "sell",
+      "order_type": "taker"
+    },
+    {
+      "id": 4,
+      "type": "exit",
+      "series_1": "RSI",
+      "series_1_params": {
+        "period": 14
+      },
+      "operator": "less_than",
+      "value": 45,
+      "action": "sell",
+      "order_type": "taker"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+=== RUNNING BULLISH DIVERGENCE BACKTEST ===
+Using NautilusTrader Strategy framework and patterns
+Loaded 100 bars of BTC/USDT 1m data
+Date range: 2024-01-01 00:00:00 to 2024-01-01 01:39:00
+Price range: $42035.42 - $42576.96
+Processing bars through NautilusTrader strategy framework...
+
+=== BACKTEST RESULTS ===
+Starting Capital: $100,000.00
+Total Trades: 11
+
+Trade History:
+  1. BUY 0.0100 BTC at $42173.23
+  2. SELL 0.0100 BTC at $42242.59 - RSI 63.7 > 60.0
+  3. BUY 0.0100 BTC at $42175.40
+  4. SELL 0.0100 BTC at $42081.83 - Max hold 10 bars reached
+  5. BUY 0.0100 BTC at $42111.32
+  6. SELL 0.0100 BTC at $42162.78 - RSI 60.3 > 60.0
+  7. BUY 0.0100 BTC at $42090.34
+  8. SELL 0.0100 BTC at $42196.49 - RSI 60.6 > 60.0
+  9. BUY 0.0100 BTC at $42161.37
+  10. SELL 0.0100 BTC at $42218.55 - RSI 61.7 > 60.0
+  11. BUY 0.0100 BTC at $42507.96
+
+Final Cash: $99,576.83
+Final BTC Holdings: 0.0100
+Final BTC Price: $42535.80
+Final Portfolio Value: $100,002.18
+Total Return: $2.18
+Return %: 0.00%
+Win Rate: 80.0% (4/5)
+Generating equity curve...
+Equity curve saved to equity_curve.png
+NautilusTrader framework-based backtest complete!
+✅ NautilusTrader framework-based backtest completed successfully!

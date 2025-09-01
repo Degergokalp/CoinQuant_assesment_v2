@@ -12,6 +12,9 @@
     "strategy_name": {
       "type": "string"
     },
+    "description": {
+      "type": "string"
+    },
     "market_type": {
       "enum": [
         "spot",
@@ -23,6 +26,9 @@
     },
     "timeframe": {
       "type": "string"
+    },
+    "initial_capital": {
+      "type": "number"
     },
     "default_position_size": {
       "type": "number"
@@ -49,6 +55,27 @@
             "slippage_pct"
           ]
         }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "start": { "type": "string" },
+          "end": { "type": "string" },
+          "timezone": { "type": "string" }
+        },
+        "required": ["start", "end", "timezone"]
+      }
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        ]
       }
     },
     "conditions": {
@@ -82,6 +109,9 @@
           "series_1": {
             "type": "string"
           },
+          "series_1_source": {
+            "type": "string"
+          },
           "series_1_params": {
             "type": "object"
           },
@@ -91,10 +121,13 @@
           "series_2": {
             "type": "string"
           },
+          "series_2_source": {
+            "type": "string"
+          },
           "series_2_params": {
             "type": "object"
           },
-          "value": {},
+          "value": { "type": ["number", "boolean", "string", "null"] },
           "action": {
             "type": "string"
           },
